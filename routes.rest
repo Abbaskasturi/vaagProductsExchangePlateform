@@ -1,0 +1,443 @@
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Abbas kasturi",
+  "email": "22641a6776@vaagdevi.edu.in",
+  "password": "12345"
+}
+
+###
+
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Lavan",
+  "email": "22641a6710@vaagdevi.edu.in",
+  "password": "12345"
+}
+
+###
+
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "22641a6776@vaagdevi.edu.in",
+  "password": "12345"
+}
+
+###
+
+POST http://localhost:3001/api/products
+Content-Type: multipart/form-data; boundary=----WebAppBoundary
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTcwMzQyLCJleHAiOjE3NTcxNjIzNDJ9.I9Md-D-c6U03dkkO_8l3JdQuqgq1Z7_NeoC-J1ZvZyY
+
+------WebAppBoundary
+Content-Disposition: form-data; name="category"
+
+Laptop
+------WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+vtex
+------WebAppBoundary
+Content-Disposition: form-data; name="rentalCostPerDay"
+
+46
+------WebAppBoundary
+Content-Disposition: form-data; name="collectionPlace"
+
+Vaagdevi College b-block entrances
+------WebAppBoundary
+Content-Disposition: form-data; name="contactPhoneNumber"
+
+9492781864
+------WebAppBoundary
+Content-Disposition: form-data; name="proofRequired"
+
+ College ID copy and Aadhar Card copy
+------WebAppBoundary
+Content-Disposition: form-data; name="securityDeposit"
+
+4000
+------WebAppBoundary
+Content-Disposition: form-data; name="model"
+
+Intel Core i7 12th Gen
+------WebAppBoundary
+Content-Disposition: form-data; name="ram"
+
+16 GB
+------WebAppBoundary
+Content-Disposition: form-data; name="rom"
+
+512 GB SSD
+------WebAppBoundary
+Content-Disposition: form-data; name="processor"
+
+ryzen
+------WebAppBoundary
+# IMPORTANT: You MUST replace the path below with a real path to an image on your computer.
+Content-Disposition: form-data; name="imageUrl"; filename="hp-envy.jpg"
+Content-Type: image/jpeg
+
+< C:\ResumeFolder\resume folder\vaagdeviProjectimages\vtex.webp
+------WebAppBoundary--
+
+
+
+### 
+
+POST http://localhost:3001/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTcwMzQyLCJleHAiOjE3NTcxNjIzNDJ9.I9Md-D-c6U03dkkO_8l3JdQuqgq1Z7_NeoC-J1ZvZyY
+Content-Type: multipart/form-data; boundary=----WebAppBoundary
+
+------WebAppBoundary
+Content-Disposition: form-data; name="category"
+
+Camera
+------WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+Fujifilm Instax Mini 11
+------WebAppBoundary
+Content-Disposition: form-data; name="rentalCostPerDay"
+
+35
+------WebAppBoundary
+Content-Disposition: form-data; name="collectionPlace"
+
+collect at d-block
+------WebAppBoundary
+Content-Disposition: form-data; name="contactPhoneNumber"
+
+9123456789
+------WebAppBoundary
+Content-Disposition: form-data; name="proofRequired"
+
+Student ID card copy with aadhar card copy 
+------WebAppBoundary
+Content-Disposition: form-data; name="securityDeposit"
+
+1000
+------WebAppBoundary
+Content-Disposition: form-data; name="model"
+
+Instant
+------WebAppBoundary
+Content-Disposition: form-data; name="storage"
+
+Instax film pack included
+------WebAppBoundary
+Content-Disposition: form-data; name="imageUrl"; filename="canon200d.jpg"
+Content-Type: image/jpeg
+
+< C:\ResumeFolder\resume folder\vaagdeviProjectimages\cam-5.webp
+------WebAppBoundary--
+
+
+### 
+
+### Create a New Drafter
+POST http://localhost:3001/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTcwMzQyLCJleHAiOjE3NTcxNjIzNDJ9.I9Md-D-c6U03dkkO_8l3JdQuqgq1Z7_NeoC-J1ZvZyY
+Content-Type: multipart/form-data; boundary=----WebAppBoundary
+
+------WebAppBoundary
+Content-Disposition: form-data; name="category"
+
+Drafter
+------WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+Flexible Arm Drafter
+------WebAppBoundary
+Content-Disposition: form-data; name="rentalCostPerDay"
+
+29
+------WebAppBoundary
+Content-Disposition: form-data; name="collectionPlace"
+
+Stationery Shop
+------WebAppBoundary
+Content-Disposition: form-data; name="contactPhoneNumber"
+
+9492781864
+------WebAppBoundary
+Content-Disposition: form-data; name="proofRequired"
+
+College ID Card copy
+------WebAppBoundary
+Content-Disposition: form-data; name="securityDeposit"
+
+200
+------WebAppBoundary
+Content-Disposition: form-data; name="model"
+
+Kohinoor Flexi
+------WebAppBoundary
+# IMPORTANT: You MUST replace the path below with a real path to an image on your computer.
+Content-Disposition: form-data; name="imageUrl"; filename="drafter.jpg"
+Content-Type: image/jpeg
+
+< C:\ResumeFolder\resume folder\vaagdeviProjectimages\d-5.jpg
+------WebAppBoundary--
+
+
+
+### =================================
+### POST A NEW BIKE
+### =================================
+
+### Create a New Bike
+POST http://localhost:3001/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTcwMzQyLCJleHAiOjE3NTcxNjIzNDJ9.I9Md-D-c6U03dkkO_8l3JdQuqgq1Z7_NeoC-J1ZvZyY
+Content-Type: multipart/form-data; boundary=----WebAppBoundary
+
+------WebAppBoundary
+Content-Disposition: form-data; name="category"
+
+Bike
+------WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+pulsar
+------WebAppBoundary
+Content-Disposition: form-data; name="rentalCostPerDay"
+
+100
+------WebAppBoundary
+Content-Disposition: form-data; name="collectionPlace"
+
+college main gate
+------WebAppBoundary
+Content-Disposition: form-data; name="contactPhoneNumber"
+
+9492781864
+------WebAppBoundary
+Content-Disposition: form-data; name="proofRequired"
+
+College ID Card copy and aadhar card copy 
+------WebAppBoundary
+Content-Disposition: form-data; name="securityDeposit"
+
+2000
+------WebAppBoundary
+Content-Disposition: form-data; name="condition"
+
+Good
+------WebAppBoundary
+Content-Disposition: form-data; name="model"
+
+pulsar 220
+------WebAppBoundary
+Content-Disposition: form-data; name="onRoadSpeed"
+
+38 km/h
+------WebAppBoundary
+# IMPORTANT: You MUST replace the path below with a real path to an image on your computer.
+Content-Disposition: form-data; name="imageUrl"; filename="bike.jpg"
+Content-Type: image/jpeg
+
+< C:\ResumeFolder\resume folder\vaagdeviProjectimages\bike-5.bmp
+------WebAppBoundary--
+
+
+
+### =================================
+### POST A NEW GATEBOOK
+### =================================
+
+### Create a New Gatebook
+POST http://localhost:3001/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTcwMzQyLCJleHAiOjE3NTcxNjIzNDJ9.I9Md-D-c6U03dkkO_8l3JdQuqgq1Z7_NeoC-J1ZvZyY
+Content-Type: multipart/form-data; boundary=----WebAppBoundary
+
+------WebAppBoundary
+Content-Disposition: form-data; name="category"
+
+Gatebook
+------WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+GATE Electrical Engineering 2025 (Arihant Experts)
+------WebAppBoundary
+Content-Disposition: form-data; name="rentalCostPerDay"
+
+15
+------WebAppBoundary
+Content-Disposition: form-data; name="collectionPlace"
+
+College Library
+------WebAppBoundary
+Content-Disposition: form-data; name="contactPhoneNumber"
+
+9492781864
+------WebAppBoundary
+Content-Disposition: form-data; name="proofRequired"
+
+college id card copy 
+------WebAppBoundary
+Content-Disposition: form-data; name="securityDeposit"
+
+150
+------WebAppBoundary
+Content-Disposition: form-data; name="edition"
+
+2025
+------WebAppBoundary
+# IMPORTANT: You MUST replace the path below with a real path to an image on your computer.
+Content-Disposition: form-data; name="imageUrl"; filename="book.jpg"
+Content-Type: image/jpeg
+
+< C:\ResumeFolder\resume folder\vaagdeviProjectimages\g-5.jpg
+------WebAppBoundary--
+
+### 
+
+### =================================
+### POST A NEW CALCULATOR
+### =================================
+
+### Create a New Calculator
+POST http://localhost:3001/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTcwMzQyLCJleHAiOjE3NTcxNjIzNDJ9.I9Md-D-c6U03dkkO_8l3JdQuqgq1Z7_NeoC-J1ZvZyY
+Content-Type: multipart/form-data; boundary=----WebAppBoundary
+
+------WebAppBoundary
+Content-Disposition: form-data; name="category"
+
+Calculator
+------WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+Texas Instruments TI-36X Pro
+------WebAppBoundary
+Content-Disposition: form-data; name="rentalCostPerDay"
+
+20
+------WebAppBoundary
+Content-Disposition: form-data; name="collectionPlace"
+
+First Year Block
+------WebAppBoundary
+Content-Disposition: form-data; name="contactPhoneNumber"
+
+9492781864
+------WebAppBoundary
+Content-Disposition: form-data; name="proofRequired"
+
+College ID Card copy 
+------WebAppBoundary
+Content-Disposition: form-data; name="securityDeposit"
+
+150
+------WebAppBoundary
+Content-Disposition: form-data; name="model"
+
+MultiView Scientific Calculator
+------WebAppBoundary
+# IMPORTANT: You MUST replace the path below with a real path to an image on your computer.
+Content-Disposition: form-data; name="imageUrl"; filename="calculator.jpg"
+Content-Type: image/jpeg
+
+< C:\ResumeFolder\resume folder\vaagdeviProjectimages\c-3.webp
+------WebAppBoundary--
+
+
+GET http://localhost:3001/api/products/gatebooks
+
+
+### Get All Drafters
+GET http://localhost:3001/api/products/drafters
+
+###
+
+GET  http://localhost:3001/api/products/laptops 
+
+### 
+GET http://localhost:3001/api/products/cameras
+
+### Update the details for the Camera with ID 4
+PUT http://localhost:3001/api/products/camera/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTcwMzQyLCJleHAiOjE3NTcxNjIzNDJ9.I9Md-D-c6U03dkkO_8l3JdQuqgq1Z7_NeoC-J1ZvZyY
+
+{
+    "model": "compact", 
+    "storage": "8GB SD Card"
+}
+
+### 
+
+PUT http://localhost:3001/api/products/laptop/7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTcxNzg5LCJleHAiOjE3NTcxNjM3ODl9.PCawbsBeaK6m2VuMwLB-6L3RPMw8KTjwNdxGMjdVOi4
+
+{
+    "rentalCostPerDay": 100,
+    "inStock": true,
+    "collectionPlace": "college main gate" , 
+}
+
+### 
+
+DELETE http://localhost:3001/api/products/laptop/10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTcwMzQyLCJleHAiOjE3NTcxNjIzNDJ9.I9Md-D-c6U03dkkO_8l3JdQuqgq1Z7_NeoC-J1ZvZyY
+
+
+### 
+
+GET http://localhost:3001/api/products/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTY2OTcyLCJleHAiOjE3NTcxNTg5NzJ9.jkpAdpGU4kXvXjpUsdGdOn6OyzK4-xbn9NzLVcX1TEA 
+
+### 
+
+GET http://localhost:3001/api/products/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzU0NTA5NzA2LCJleHAiOjE3NTcxMDE3MDZ9.Dmiwfg_Nc52K5eX_O2jNjG1allwo66dT5qzp7EoEFMg 
+
+
+### 
+
+POST http://localhost:3001/api/rentals
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzU0NTY3MDMwLCJleHAiOjE3NTcxNTkwMzB9.dPZhdvvHu2RXUuGi8WTjlKNrTuerwBw8Vr1dM6VLv7c
+
+{
+  "productCategory": "Laptop",
+  "productId": 2,
+  "startDate": "2025-09-10",
+  "endDate": "2025-09-15"
+}
+
+### 
+
+### OWNER marks their notifications as read
+PATCH http://localhost:3001/api/notifications/mark-as-read
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTY2MTQxLCJleHAiOjE3NTcxNTgxNDF9.USh2AJ8deLGR4FEkYy6Qsqksn4lcUZZqFP4Ga6YK1U0
+
+
+
+
+### 
+
+PATCH http://localhost:3001/api/rentals/1/status
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0NTY2MTQxLCJleHAiOjE3NTcxNTgxNDF9.USh2AJ8deLGR4FEkYy6Qsqksn4lcUZZqFP4Ga6YK1U0
+
+{
+    "status": "active"
+}
+
+### RENTER checks their notifications
+# They should see a new notification that their request was approved.
+GET http://localhost:3001/api/notifications
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzU0NTY3MDMwLCJleHAiOjE3NTcxNTkwMzB9.dPZhdvvHu2RXUuGi8WTjlKNrTuerwBw8Vr1dM6VLv7c  
+
+
+### RENTER checks their "My Rentals" list
+# The status of the rental should now be "active".
+GET http://localhost:3001/api/rentals/my-rentals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzU0NTY4NjIzLCJleHAiOjE3NTcxNjA2MjN9.H1FUzipwwf0VmhmfNDnZannr9AlDzvlNqhLcNhERGx8
