@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Drafter.init({
+    // ... all your fields are correct
     name: { type: DataTypes.STRING, allowNull: false },
     rentalCostPerDay: { type: DataTypes.FLOAT, allowNull: false },
     imageUrl: { type: DataTypes.STRING, allowNull: false },
@@ -22,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Drafter',
+    tableName: 'drafters' // <-- THIS LINE WAS MISSING
   });
   return Drafter;
 };

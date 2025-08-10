@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Calculator.init({
+    // ... all your fields are correct
     name: { type: DataTypes.STRING, allowNull: false },
     rentalCostPerDay: { type: DataTypes.FLOAT, allowNull: false },
     imageUrl: { type: DataTypes.STRING, allowNull: false },
@@ -15,10 +16,11 @@ module.exports = (sequelize, DataTypes) => {
     inStock: { type: DataTypes.BOOLEAN, defaultValue: true },
     proofRequired: { type: DataTypes.STRING, allowNull: false },
     securityDeposit: { type: DataTypes.FLOAT, allowNull: false },
-    model: { type: DataTypes.STRING } // e.g., "Casio FX-991EX", "Scientific"
+    model: { type: DataTypes.STRING }
   }, {
     sequelize,
     modelName: 'Calculator',
+    tableName: 'calculators' // <-- THIS LINE WAS MISSING
   });
   return Calculator;
 };

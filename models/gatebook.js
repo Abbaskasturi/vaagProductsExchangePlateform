@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Gatebook.init({
+    // ... all your fields are correct
     name: { type: DataTypes.STRING, allowNull: false },
     rentalCostPerDay: { type: DataTypes.FLOAT, allowNull: false },
     imageUrl: { type: DataTypes.STRING, allowNull: false },
@@ -22,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Gatebook',
+    tableName: 'gatebooks' // <-- THIS LINE WAS MISSING
   });
   return Gatebook;
 };

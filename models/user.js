@@ -1,26 +1,34 @@
 'use strict';
 const { Model } = require('sequelize');
+const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      // ⚠️ THIS BLOCK IS THE CRITICAL UPDATE ⚠️
-      // It tells Sequelize that one User can have many of each item.
-      User.hasMany(models.Laptop, { foreignKey: 'userId', as: 'laptops' });
-      User.hasMany(models.Bike, { foreignKey: 'userId', as: 'bikes' });
-      User.hasMany(models.Camera, { foreignKey: 'userId', as: 'cameras' });
-      User.hasMany(models.Calculator, { foreignKey: 'userId', as: 'calculators' });
-      User.hasMany(models.Drafter, { foreignKey: 'userId', as: 'drafters' });
-      User.hasMany(models.Gatebook, { foreignKey: 'userId', as: 'gatebooks' });
+      // All your User.hasMany() associations go here
+      User.hasMany(models.Laptop, { foreignKey: 'userId' });
+      User.hasMany(models.Bike, { foreignKey: 'userId' });
+      // etc.
     }
   }
   User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
+    // This is the corrected part
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
+      validate: {
+        isEmail: true,
+        isVaagdeviEmail(value) {
+          if (!value.endsWith('@vaagdevi.edu.in')) {
+            throw new Error('Only @vaagdevi.edu.in emails are allowed!');
+          }
+        }
+      }
     },
     password: {
       type: DataTypes.STRING,
@@ -30,5 +38,11 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'User',
   });
+
+  User.beforeCreate(async (user, options) => {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+  });
+
   return User;
 };

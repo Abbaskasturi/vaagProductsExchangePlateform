@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Camera.init({
+    // ... all your fields are correct
     name: { type: DataTypes.STRING, allowNull: false },
     rentalCostPerDay: { type: DataTypes.FLOAT, allowNull: false },
     imageUrl: { type: DataTypes.STRING, allowNull: false },
@@ -23,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Camera',
+    tableName: 'cameras' // <-- THIS LINE WAS MISSING
   });
   return Camera;
 };
