@@ -4,14 +4,13 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Laptop extends Model {
     static associate(models) {
-      // This confirms the Laptop "belongs to" a User.
+      // Defines that a Laptop belongs to one User
       Laptop.belongsTo(models.User, {
         foreignKey: 'userId',
         as: 'owner'
       });
     }
   }
-
   Laptop.init({
     name: { type: DataTypes.STRING, allowNull: false },
     rentalCostPerDay: { type: DataTypes.FLOAT, allowNull: false },
@@ -30,6 +29,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Laptop',
     tableName: 'laptops'
   });
-
   return Laptop;
 };
