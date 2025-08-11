@@ -1,18 +1,22 @@
 'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+
+// This line is updated to point to your new 'config.js' file.
+const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
 
 let sequelize;
+// This logic correctly uses the DATABASE_URL from Render's environment variables.
 if (config.use_env_variable) {
-  // This is for production on Render (uses DATABASE_URL)
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  // This is for your local development (uses config.json)
+  // This is for your local development.
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
