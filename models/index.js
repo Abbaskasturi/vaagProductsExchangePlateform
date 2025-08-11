@@ -7,19 +7,20 @@ const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 
-// This line is updated to point to your new 'config.js' file.
+// This line is updated to point to your 'config.js' file.
 const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
 
 let sequelize;
-// This logic correctly uses the DATABASE_URL from Render's environment variables.
+// This logic correctly uses the DATABASE_URL from Render's environment variables for production.
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  // This is for your local development.
+  // This part is used for your local development computer.
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+// This part reads all your model files (like user.js, bike.js) and adds them to the db object.
 fs
   .readdirSync(__dirname)
   .filter(file => {
@@ -35,6 +36,7 @@ fs
     db[model.name] = model;
   });
 
+// This part sets up associations between your models if you have defined any.
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
