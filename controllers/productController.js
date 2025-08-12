@@ -1,5 +1,6 @@
 const db = require('../models');
 
+// Helper function to get the correct database model based on a category string
 const getModelByCategory = (category) => {
     if (!category) return null;
     const models = {
@@ -8,11 +9,12 @@ const getModelByCategory = (category) => {
         camera: db.Camera,
         gatebook: db.Gatebook,
         drafter: db.Drafter,
-        calculator: db.Calculator // <-- UPDATED
+        calculator: db.Calculator
     };
     return models[category.toLowerCase()];
 };
 
+// --- CREATE A NEW PRODUCT ---
 exports.createProduct = async (req, res) => {
     const userId = req.user.id;
     const { category, ...productData } = req.body;
@@ -36,6 +38,46 @@ exports.createProduct = async (req, res) => {
     }
 };
 
+// --- GET ALL PRODUCTS FROM EVERY CATEGORY ---
+// This is the new function you requested
+exports.getAllProducts = async (req, res) => {
+    try {
+        // Define the owner details to include in the response
+        const includeOwner = {
+            include: {
+                model: db.User,
+                as: 'owner',
+                attributes: ['id', 'name'] // Only include the owner's ID and name
+            }
+        };
+
+        // Fetch all products from each category table
+        const bikes = await db.Bike.findAll(includeOwner);
+        const laptops = await db.Laptop.findAll(includeOwner);
+        const cameras = await db.Camera.findAll(includeOwner);
+        const gatebooks = await db.Gatebook.findAll(includeOwner);
+        const drafters = await db.Drafter.findAll(includeOwner);
+        const calculators = await db.Calculator.findAll(includeOwner);
+
+        // Combine all products into a single array
+        const allProducts = [
+            ...bikes,
+            ...laptops,
+            ...cameras,
+            ...gatebooks,
+            ...drafters,
+            ...calculators
+        ];
+
+        res.status(200).json(allProducts);
+    } catch (error) {
+        console.error('Error fetching all products:', error);
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    }
+};
+
+
+// --- GET PRODUCTS FILTERED BY A SPECIFIC CATEGORY ---
 exports.getProductsByCategory = (category) => {
     return async (req, res) => {
         const Model = getModelByCategory(category);
@@ -48,6 +90,7 @@ exports.getProductsByCategory = (category) => {
     };
 };
 
+// --- GET ALL PRODUCTS POSTED BY THE LOGGED-IN USER ---
 exports.getMyProducts = async (req, res) => {
     const userId = req.user.id;
     try {
@@ -56,14 +99,15 @@ exports.getMyProducts = async (req, res) => {
         const myCameras = await db.Camera.findAll({ where: { userId } });
         const myGatebooks = await db.Gatebook.findAll({ where: { userId } });
         const myDrafters = await db.Drafter.findAll({ where: { userId } });
-        const myCalculators = await db.Calculator.findAll({ where: { userId } }); // <-- UPDATED
-        const allMyProducts = [ ...myBikes, ...myLaptops, ...myCameras, ...myGatebooks, ...myDrafters, ...myCalculators ]; // <-- UPDATED
+        const myCalculators = await db.Calculator.findAll({ where: { userId } });
+        const allMyProducts = [ ...myBikes, ...myLaptops, ...myCameras, ...myGatebooks, ...myDrafters, ...myCalculators ];
         res.status(200).json(allMyProducts);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching user products', error: error.message });
     }
 };
 
+// --- UPDATE A SPECIFIC PRODUCT ---
 exports.updateProduct = async (req, res) => {
     const loggedInUserId = req.user.id;
     const { category, id } = req.params;
@@ -86,6 +130,7 @@ exports.updateProduct = async (req, res) => {
     }
 };
 
+// --- DELETE A SPECIFIC PRODUCT ---
 exports.deleteProduct = async (req, res) => {
     const loggedInUserId = req.user.id;
     const { category, id } = req.params;

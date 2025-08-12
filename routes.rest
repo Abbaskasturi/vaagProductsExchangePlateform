@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "name": "Abbas kasturi",
-  "email": "22641a6776@vaagdevi.edu.in",
+  "email": "kasturiabbaspatel@gmail.com",
   "password": "12345"
 }
 
@@ -448,3 +448,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxN
 ### OWNER checks their listings to see only 'active' rentals
 GET http://localhost:3001/api/rentals/my-listings?status=active
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU0ODE1NDIyLCJleHAiOjE3NTc0MDc0MjJ9.hsGtcmWkE7gFRoxClGeyJAviLaXI0R-jlAf03tCQfoc
+
+
+### 
+
+http://localhost:5000/api/products
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzU1MDE5NzE2LCJleHAiOjE3NTc2MTE3MTZ9.0ZMHZjMbBrSBlv1uzfRZMGMjszkhMlY3qxHxafj6Vng
