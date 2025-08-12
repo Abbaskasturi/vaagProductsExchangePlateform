@@ -29,17 +29,10 @@ app.get('/', (req, res) => {
 });
 
 
-// --- CORRECTED SERVER START BLOCK ---
-
 // Get the port from environment variables, with a default for local development
 const PORT = process.env.PORT || 3001;
 
-// Start the server and listen for incoming requests
+// This just starts the server immediately.
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
-// Optional: Test the database connection on startup
-db.sequelize.authenticate()
-  .then(() => console.log('Database connection has been established successfully.'))
-  .catch(err => console.error('Unable to connect to the database:', err));
