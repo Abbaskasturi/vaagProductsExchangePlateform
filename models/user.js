@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
-    tableName: 'users', // <-- IMPORTANT: Fixes the 'Users doesn't exist' error
+    tableName: 'user', // <-- IMPORTANT: Fixes the 'Users doesn't exist' error
     hooks: {
       // Hook to automatically hash the password before a user is created
       beforeCreate: async (user) => {
