@@ -2,8 +2,8 @@ POST http://localhost:3001/api/auth/register
 Content-Type: application/json
 
 {
-  "name": "Abbas kasturi",
-  "email": "kasturiabbaspatel@gmail.com",
+  "name": "Abbas",
+  "email": "22641a6776@vaagdevi.edu.in",
   "password": "12345"
 }
 
