@@ -1,5 +1,6 @@
 require('dotenv').config();
-const fs = require('fs'); 
+const fs = require('fs');
+const path = require('path'); 
 
 module.exports = {
   development: {
@@ -11,7 +12,7 @@ module.exports = {
     dialect: 'mysql',
     dialectOptions: {
       ssl: {
-        ca: fs.readFileSync(__dirname + '/ca.pem')
+        ca: fs.readFileSync(path.join(__dirname, '..', 'ca.pem'))
       }
     }
   },
