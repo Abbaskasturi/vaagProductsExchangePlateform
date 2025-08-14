@@ -1,15 +1,22 @@
 require('dotenv').config();
+const fs = require('fs'); 
 
 module.exports = {
   development: {
-    username: process.env.DB_USER, // From your .env file
-    password: process.env.DB_PASSWORD, // From your .env file
-    database: process.env.DB_NAME, // From your .env file
-    host: process.env.DB_HOST, // From your .env file
-    dialect: 'mysql'
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: 'mysql',
+    dialectOptions: {
+      ssl: {
+        ca: fs.readFileSync(__dirname + '/ca.pem')
+      }
+    }
   },
   production: {
-    use_env_variable: "DATABASE_URL", // This is for Render
+    use_env_variable: "DATABASE_URL",
     dialect: 'mysql',
     dialectOptions: {
       ssl: {
