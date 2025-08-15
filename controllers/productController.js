@@ -39,19 +39,16 @@ exports.createProduct = async (req, res) => {
 };
 
 // --- GET ALL PRODUCTS FROM EVERY CATEGORY ---
-// This is the new function you requested
 exports.getAllProducts = async (req, res) => {
     try {
-        // Define the owner details to include in the response
         const includeOwner = {
             include: {
                 model: db.User,
                 as: 'owner',
-                attributes: ['id', 'name'] // Only include the owner's ID and name
+                attributes: ['id', 'name']
             }
         };
 
-        // Fetch all products from each category table
         const bikes = await db.Bike.findAll(includeOwner);
         const laptops = await db.Laptop.findAll(includeOwner);
         const cameras = await db.Camera.findAll(includeOwner);
@@ -59,14 +56,14 @@ exports.getAllProducts = async (req, res) => {
         const drafters = await db.Drafter.findAll(includeOwner);
         const calculators = await db.Calculator.findAll(includeOwner);
 
-        // Combine all products into a single array
+        // Map over each array to add the category property
         const allProducts = [
-            ...bikes,
-            ...laptops,
-            ...cameras,
-            ...gatebooks,
-            ...drafters,
-            ...calculators
+            ...bikes.map(p => ({ ...p.get({ plain: true }), category: 'Bike' })),
+            ...laptops.map(p => ({ ...p.get({ plain: true }), category: 'Laptop' })),
+            ...cameras.map(p => ({ ...p.get({ plain: true }), category: 'Camera' })),
+            ...gatebooks.map(p => ({ ...p.get({ plain: true }), category: 'Gatebook' })),
+            ...drafters.map(p => ({ ...p.get({ plain: true }), category: 'Drafter' })),
+            ...calculators.map(p => ({ ...p.get({ plain: true }), category: 'Calculator' })),
         ];
 
         res.status(200).json(allProducts);
@@ -91,16 +88,28 @@ exports.getProductsByCategory = (category) => {
 };
 
 // --- GET ALL PRODUCTS POSTED BY THE LOGGED-IN USER ---
+// THIS IS THE CORRECTED FUNCTION
 exports.getMyProducts = async (req, res) => {
     const userId = req.user.id;
     try {
-        const myBikes = await db.Bike.findAll({ where: { userId } });
-        const myLaptops = await db.Laptop.findAll({ where: { userId } });
-        const myCameras = await db.Camera.findAll({ where: { userId } });
-        const myGatebooks = await db.Gatebook.findAll({ where: { userId } });
-        const myDrafters = await db.Drafter.findAll({ where: { userId } });
-        const myCalculators = await db.Calculator.findAll({ where: { userId } });
-        const allMyProducts = [ ...myBikes, ...myLaptops, ...myCameras, ...myGatebooks, ...myDrafters, ...myCalculators ];
+        // Using { raw: true } returns plain objects instead of Sequelize instances
+        const myBikes = await db.Bike.findAll({ where: { userId }, raw: true });
+        const myLaptops = await db.Laptop.findAll({ where: { userId }, raw: true });
+        const myCameras = await db.Camera.findAll({ where: { userId }, raw: true });
+        const myGatebooks = await db.Gatebook.findAll({ where: { userId }, raw: true });
+        const myDrafters = await db.Drafter.findAll({ where: { userId }, raw: true });
+        const myCalculators = await db.Calculator.findAll({ where: { userId }, raw: true });
+
+        // Map over each array to add the category property to each product
+        const allMyProducts = [
+            ...myBikes.map(product => ({ ...product, category: 'Bike' })),
+            ...myLaptops.map(product => ({ ...product, category: 'Laptop' })),
+            ...myCameras.map(product => ({ ...product, category: 'Camera' })),
+            ...myGatebooks.map(product => ({ ...product, category: 'Gatebook' })),
+            ...myDrafters.map(product => ({ ...product, category: 'Drafter' })),
+            ...myCalculators.map(product => ({ ...product, category: 'Calculator' })),
+        ];
+
         res.status(200).json(allMyProducts);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching user products', error: error.message });
